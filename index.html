@@ -1,0 +1,16 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>OAuth Callback</title>
+<style>body{font-family:sans-serif;max-width:640px;margin:60px auto;padding:0 16px}
+code{display:block;padding:12px;background:#eee;word-break:break-all}</style></head>
+<body>
+<h3>Upwork OAuth callback</h3>
+<p>Authorization code:</p>
+<code id="c">—</code>
+<button onclick="navigator.clipboard.writeText(document.getElementById('c').textContent)">Copy</button>
+<p id="e" style="color:red"></p>
+<script>
+const p = new URLSearchParams(location.search);
+if (p.get('code')) document.getElementById('c').textContent = p.get('code');
+if (p.get('error')) document.getElementById('e').textContent = p.get('error') + ': ' + (p.get('error_description') || '');
+</script>
+</body></html>
